@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContaPoupancaTest {
-    private ContaPoupanca contaPoupanca;
+    private classes.ContaPoupanca contaPoupanca;
 
     @BeforeEach
     void setUp() {
-        contaPoupanca = new ContaPoupanca(3003, 0.02);
+        contaPoupanca = new classes.ContaPoupanca(3003, 0.02);
     }
 
     @Test
@@ -28,13 +28,13 @@ public class ContaPoupancaTest {
 
     @Test
     void testTaxaJurosZero() {
-        ContaPoupanca contaSemJuros = new ContaPoupanca(4004, 0.0);
+        classes.ContaPoupanca contaSemJuros = new classes.ContaPoupanca(4004, 0.0);
         assertEquals(0.0, contaSemJuros.getTaxaJuros(), 0.001);
     }
 
     @Test
     void testTaxaJurosNegativa() {
-        ContaPoupanca contaJurosNegativo = new ContaPoupanca(5005, -0.01);
+        classes.ContaPoupanca contaJurosNegativo = new classes.ContaPoupanca(5005, -0.01);
         assertEquals(-0.01, contaJurosNegativo.getTaxaJuros(), 0.001);
     }
 

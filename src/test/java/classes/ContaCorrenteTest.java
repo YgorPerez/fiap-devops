@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContaCorrenteTest {
-    private ContaCorrente contaCorrente;
+    private classes.ContaCorrente contaCorrente;
 
     @BeforeEach
     void setUp() {
-        contaCorrente = new ContaCorrente(2002, 1000.0);
+        contaCorrente = new classes.ContaCorrente(2002, 1000.0);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ContaCorrenteTest {
 
     @Test
     void testLimiteZero() {
-        ContaCorrente contaSemLimite = new ContaCorrente(3003, 0.0);
+        classes.ContaCorrente contaSemLimite = new classes.ContaCorrente(3003, 0.0);
         assertEquals(0.0, contaSemLimite.getLimite(), 0.001);
 
         contaSemLimite.depositar(100.0);

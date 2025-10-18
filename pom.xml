@@ -47,6 +47,9 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        
         <plugins>
             <!-- Compilador Maven -->
             <plugin>
@@ -56,6 +59,9 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
                 </configuration>
             </plugin>
 

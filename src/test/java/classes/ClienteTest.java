@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ClienteTest {
-    private Cliente cliente;
+    private classes.Cliente cliente;
 
     @BeforeEach
     void setUp() {
-        cliente = new Cliente();
+        cliente = new classes.Cliente();
     }
 
     @Test

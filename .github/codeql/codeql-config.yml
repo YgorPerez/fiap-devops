@@ -11,7 +11,7 @@ build-mode: manual
 java:
   # Usar Maven para build
   build-command: "mvn clean compile"
-  
+
 # Configuração de paths
 paths:
   - "src/"

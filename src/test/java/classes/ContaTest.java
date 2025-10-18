@@ -5,11 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ContaTest {
-    private Conta conta;
+    private classes.Conta conta;
 
     @BeforeEach
     void setUp() {
-        conta = new Conta(12345);
+        conta = new classes.Conta(12345);
     }
 
     @Test
