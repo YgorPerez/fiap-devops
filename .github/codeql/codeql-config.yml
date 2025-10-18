@@ -1,0 +1,26 @@
+name: "CodeQL Config"
+
+# Configuração específica para análise de código Java
+queries:
+  - uses: security-and-quality
+
+# Configuração de build para Java
+build-mode: manual
+
+# Configuração específica para Java
+java:
+  # Usar Maven para build
+  build-command: "mvn clean compile"
+  
+# Configuração de paths
+paths:
+  - "src/"
+  - "target/classes/"
+
+# Excluir arquivos desnecessários
+paths-ignore:
+  - "src/test/"
+  - "target/test-classes/"
+  - "**/*.class"
+  - "**/node_modules/"
+  - "**/.git/"
