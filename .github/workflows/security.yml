@@ -101,7 +101,7 @@ jobs:
   # Verificação de secrets (opcional)
   # secret-scan:
   #   runs-on: ubuntu-latest
-  #   
+  #
   #   steps:
   #   - name: Checkout código
   #     uses: actions/checkout@v4
