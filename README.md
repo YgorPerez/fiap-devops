@@ -297,17 +297,33 @@ fintech-redis    docker-entrypoint.sh redis   Up      0.0.0.0:6379->6379/tcp
 #### Build e Testes
 ![Pipeline Build](https://github.com/user/fiap/workflows/CI%2FCD%20Pipeline/badge.svg)
 
+**Link de execução do pipeline:**
+- [GitHub Actions - Workflow Run](https://github.com/YgorPerez/fiap-devops/actions/runs/18609402217/job/53064701254)
+
+#### Prints do Funcionamento
+
+**Pipeline CI/CD:**
+![Pipeline CI/CD](./public/chrome_9KTzqn10XZ.png)
+
+**Deploy e Execução - Staging:**
+![Deploy Staging](./public/chrome_BzQxItXmEy.png)
+
+**Deploy e Execução - Produção:**
+![Deploy Production](./public/chrome_CA6x3TLGu1.png)
+
 #### Deploy Staging
 - **Branch**: `develop`
 - **Ambiente**: Staging
 - **URL**: https://staging.fintech-app.com
 - **Status**: ✅ Deployed
+- **Evidências**: Prints e logs acima demonstram execução bem-sucedida
 
 #### Deploy Produção
 - **Branch**: `main`
 - **Ambiente**: Production
 - **URL**: https://fintech-app.com
 - **Status**: ✅ Deployed
+- **Evidências**: Prints e logs acima demonstram execução bem-sucedida
 
 ### 5. **Cobertura de Testes**
 ```
@@ -403,6 +419,3 @@ fintech-app    | Aplicação finalizada.
 - [ ] Implementar backup automático
 - [ ] Adicionar métricas de negócio
 
----
-
-**Desenvolvido com ❤️ para FIAP - ESGInteligentes**
