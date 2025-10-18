@@ -17,6 +17,10 @@ public class Conta {
     return saldo;
   }
 
+  protected void setSaldo(double saldo) {
+    this.saldo = saldo;
+  }
+
   // Métodos para operações bancárias
   public void depositar(double valor) {
     if(valor > 0){

@@ -13,7 +13,8 @@ public class ContaCorrente extends Conta {
   public void sacar(double valor) {
     double saldoAtual = getSaldo();
     if(valor > 0 && (saldoAtual + limite) >= valor){
-      super.sacar(valor);
+      setSaldo(saldoAtual - valor);
+      System.out.println("Saque de R$" + valor + " realizado com sucesso.");
       System.out.println("Saque de R$" + valor + " realizado na conta " + getNumeroConta());
     } else {
       System.out.println("Saldo insuficiente ou valor inválido.");
