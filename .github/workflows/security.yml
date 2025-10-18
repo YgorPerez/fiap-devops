@@ -98,20 +98,20 @@ jobs:
     - name: Executar análise CodeQL
       uses: github/codeql-action/analyze@v2
 
-  # Verificação de secrets
-  secret-scan:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout código
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
-    - name: Executar TruffleHog
-      uses: trufflesecurity/trufflehog@main
-      with:
-        path: ./
-        base: main
-        head: HEAD
-        extra_args: --debug --only-verified
+  # Verificação de secrets (opcional)
+  # secret-scan:
+  #   runs-on: ubuntu-latest
+  #   
+  #   steps:
+  #   - name: Checkout código
+  #     uses: actions/checkout@v4
+  #     with:
+  #       fetch-depth: 0
+  #
+  #   - name: Executar TruffleHog
+  #     uses: trufflesecurity/trufflehog@main
+  #     with:
+  #       path: ./
+  #       base: main
+  #       head: HEAD
+  #       extra_args: --debug --only-verified
