@@ -9,10 +9,11 @@ public class ContaCorrente extends Conta {
     this.limite = limite;
   }
 
+  @Override
   public void sacar(double valor) {
-    double saldo = 0;
-    if(valor > 0 && (saldo + limite) >= valor){
-      saldo -= valor;
+    double saldoAtual = getSaldo();
+    if(valor > 0 && (saldoAtual + limite) >= valor){
+      super.sacar(valor);
       System.out.println("Saque de R$" + valor + " realizado na conta " + getNumeroConta());
     } else {
       System.out.println("Saldo insuficiente ou valor inválido.");
