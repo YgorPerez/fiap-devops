@@ -1,5 +1,5 @@
 # Multi-stage build para otimizar o tamanho da imagem
-FROM openjdk:17-jdk-slim AS build
+FROM eclipse-temurin:17-jdk-alpine AS build
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -11,15 +11,15 @@ COPY src/ ./src/
 RUN javac -d ./target/classes ./src/classes/*.java ./src/Main.java
 
 # Stage de produção
-FROM openjdk:17-jre-slim
+FROM eclipse-temurin:17-jre-alpine
 
 # Instalar dependências necessárias
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     curl \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/cache/apk/*
 
 # Criar usuário não-root para segurança
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN addgroup -g 1001 appuser && adduser -D -u 1001 -G appuser appuser
 
 # Definir diretório de trabalho
 WORKDIR /app
