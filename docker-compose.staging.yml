@@ -1,0 +1,41 @@
+version: '3.8'
+
+# Override para ambiente de staging
+services:
+  fintech-app:
+    environment:
+      - APP_ENV=staging
+      - JAVA_OPTS=-Xmx512m -Xms256m -Dspring.profiles.active=staging
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./logs/staging:/app/logs
+    restart: always
+
+  postgres:
+    environment:
+      - POSTGRES_DB=fintech_staging
+      - POSTGRES_USER=fintech_user
+      - POSTGRES_PASSWORD=staging_password_secure
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-staging-data:/var/lib/postgresql/data
+
+  redis:
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-staging-data:/data
+
+  nginx:
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.staging.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  postgres-staging-data:
+    driver: local
+  redis-staging-data:
+    driver: local

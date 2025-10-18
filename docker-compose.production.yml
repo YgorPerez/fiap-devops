@@ -1,0 +1,84 @@
+version: '3.8'
+
+# Override para ambiente de produção
+services:
+  fintech-app:
+    environment:
+      - APP_ENV=production
+      - JAVA_OPTS=-Xmx1024m -Xms512m -Dspring.profiles.active=prod
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs/production:/app/logs
+    restart: always
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  postgres:
+    environment:
+      - POSTGRES_DB=fintech_prod
+      - POSTGRES_USER=fintech_user
+      - POSTGRES_PASSWORD=production_password_very_secure
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-production-data:/var/lib/postgresql/data
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+
+  redis:
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-production-data:/data
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  nginx:
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.production.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+volumes:
+  postgres-production-data:
+    driver: local
+  redis-production-data:
+    driver: local
